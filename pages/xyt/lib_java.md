@@ -9,15 +9,9 @@ folder: xyt
 
 Installation
 ------------
-In order to use big xyt Cloud Platform Java Client add the following lines to your `pom.xml`:
 
-```
-<dependency>
-  <groupId>big-xyt</groupId>
-  <artifactId>xyt-hub</artifactId>
-  <version>1.0.0</version>
- </dependency>
-```
+The Java library is delivered as JAR file with dependencies, which has to be added as reference in your project.
+
 
 Creating client object
 -----------------------
