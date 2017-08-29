@@ -28,7 +28,7 @@ Browsing data catalogue
 Listing of available sources:
 
 ```
-Sources sources = client.lookupSources();
+SourceInfo sources = client.lookupSources();
 ```
 
 ### Exchanges lookup
