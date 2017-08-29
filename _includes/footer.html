@@ -1,0 +1,16 @@
+<footer>
+    <div class="row">
+      <div class="col-lg-6">
+        <img height="36" src="images/company-logo.png"/>
+      </div>
+      <div class="col-lg-6 footer">
+       &copy;{{ site.time | date: "%Y"  }} {{site.company_name}}. All rights reserved. <br />
+{% if page.last_updated %}<span>Page last updated:</span> {{page.last_updated}}<br/>{% endif %} Site last generated: {{ site.time | date: "%b %-d, %Y"  }} <br />
+      </div>
+    </div>
+    <div class="row">
+        <div class="footer">
+          <small>The site is built on <a href="http://idratherbewriting.com/documentation-theme-jekyll/">Tom Johnson’s documentation theme for jekyll</a>.</small>
+        </div>
+    </div>
+</footer>
