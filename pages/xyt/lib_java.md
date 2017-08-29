@@ -406,7 +406,7 @@ Retrieves auction for given symbols and filtering rules:
 ```
 List<String> symbols = new ArrayList<String>();
 symbols.add("DBK.XE");
-AuctionData auctionData = client.getAuctionData("ACTIV", symbols, "2016.10.04", "09:00:00.000", "09:01:30.000");
+AuctionData auctionData = client.getAuctionData("ACTIV", symbols, "2016.10.04");
 ```
 
 #### Input parameters
@@ -478,7 +478,7 @@ Retrieves settlement prices for given list of derivative symbols:
 ```
 List<String> symbols = new ArrayList<String>();
 symbols.add("DBK.XE");
-SettlementPricesData prices = client.getSettlementPrices("ACTIV", symbols, "2016.10.04", "2016.11.04");
+SettlementPriceData prices = client.getSettlementPrices("ACTIV", symbols, "2016.10.04", "2016.11.04");
 ```
 
 #### Input parameters
@@ -513,8 +513,9 @@ Retrieves reference data for given symbols and date.
 Note searching by pattern and retrieval of basing reference data is possible via lookupSymbols method.
 
 ```
-String instrument = "ZALd.BTE"
-ReferenceData referenceData = client.getReferenceData("ACTIV", instrument, "2016.09.01");
+List<String> symbols = new ArrayList<String>();
+symbols.add("C/17Z.NL");
+ReferenceData referenceData = client.getReferenceData("ACTIV", symbols, "2016.09.01");
 ```
 
 #### Input parameters
