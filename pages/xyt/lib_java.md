@@ -98,7 +98,7 @@ itemTypes.add(ItemType.INDIVIDUAL_ITEM);
 
 SymbolData foundSymbols = client.lookupSymbols("ACTIV", pattern, exchanges,
                                                new ArrayList<String>(), new ArrayList<String>(), new ArrayList<ProductType>(),
-                                               itemTypes, 0, 0, "2016.09.01", "2016.09.02");
+                                               itemTypes, ProtoUtils.dateFromString("2016.09.01"), ProtoUtils.dateFromString("2016.09.02") );
 ```
 
 #### Input parameters
