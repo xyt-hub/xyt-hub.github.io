@@ -393,6 +393,44 @@ var orders = client.OrderData("SOURCE", symbols,
 | source        | String          | x         | Data source.                                  |
 | symbols       | List\<String\>  | x         | List of symbols.                              |
 | day           | DateTime        | x         | Requested day.                                |
+| fromTime      | TimeSpan?       |           | Start of the requested time range.            |
+| toTime        | TimeSpan?       |           | End of the requested time range.              |
+
+#### Output columns
+
+| Column           | Type       | Description                                                 |
+|------------------|------------|-------------------------------------------------------------|
+| symbol           | String     | Symbol.                                                     |
+| order_date       | DateTime   | Date.                                                       |
+| time             | TimeSpan   | Time of trade or quote.                                     |
+| action           | String     | Orderbook entry update action.                              |
+| order_id         | String     | Order ID.                                                   |
+| order_side       | String     | Order side.                                                 |
+| order_price      | double     | Order price.                                                |
+| order_size       | long       | Order size.                                                 |
+| order_time       | TimeSpan   | Order time.                                                 |
+| trade_id         | String     | Trade ID.                                                   |
+| order_type       | TimeSpan   | Order type.                                                 |
+
+
+### Auction data
+
+Retrieves auction for given symbols and filtering rules:
+
+```
+var symbols = new List<string>() { "DBK.XE" };
+
+var orders = client.AuctionData("SOURCE", symbols,
+                                day: new DateTime(2016, 11, 10));
+```
+
+#### Input parameters
+
+| Parameter     | Type            | Required  | Description                                   |
+|---------------|-----------------|-----------|-----------------------------------------------|
+| source        | String          | x         | Data source.                                  |
+| symbols       | List\<String\>  | x         | List of symbols.                              |
+| day           | DateTime        | x         | Requested day.                                |
 
 #### Output columns
 
@@ -495,8 +533,9 @@ Retrieves reference data for given symbols and date.
 Note searching by pattern and retrieval of basing reference data is possible via `LookupSymbols` method.
 
 ```
-string instrument = "ZALd.BTE"
-var reference = client.ReferenceData("SOURCE", instrument, day: new DateTime(2016, 9, 1));
+var symbols = new List<string>() { "DBK.XE" };
+
+var reference = client.ReferenceData("SOURCE", symbols, day: new DateTime(2016, 9, 1));
 ```
 
 #### Input parameters

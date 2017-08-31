@@ -149,7 +149,7 @@ Retrieving all trades (including non-regular) with trade corrections applied:
     from xyt import tick_data, TickDataType, TickDataFlag
 
     td = tick_data(source='ACTIV', symbol='ZAL.XE', day='2016.05.05',
-                   type=TickDataType.TRADES,
+                   data_type=TickDataType.TRADES,
                    from_time='09:00:00.000', to_time='09:10:09.999',
                    flags=[TickDataFlag.APPLY_TRADE_CORRECTIONS, TickDataFlag.INCLUDE_NON_REGULAR,
                           TickDataFlag.INCLUDE_TRADE_CONDITION_INFO])
@@ -160,7 +160,7 @@ Retrieving quotes:
     from xyt import tick_data, TickDataType, TickDataFlag
 
     td=tick_data(source='ACTIV', symbol='ZAL.XE', day='2016.05.05',
-                 type=TickDataFlag.QUOTES,
+                 data_type=TickDataFlag.QUOTES,
                  from_time='09:00:00.000', to_time='09:10:09.999')
 
 
@@ -169,7 +169,7 @@ Retrieving trades and quotes in one call:
     from xyt import tick_data, TickDataType, TickDataFlag
 
     td = tick_data(source='ACTIV', symbol='ZAL.XE', day='2016.05.05',
-                   type=TickDataType.TRADES_AND_QUOTES,
+                   data_type=TickDataType.TRADES_AND_QUOTES,
                    from_time='09:00:00.000', to_time='09:02:00.000',
                    flags=[TickDataFlag.APPLY_TRADE_CORRECTIONS, TickDataFlag.INCLUDE_NON_REGULAR,
                           TickDataFlag.INCLUDE_TRADE_CONDITION_INFO])
@@ -180,11 +180,11 @@ Retrieving trades and quotes in one call:
 | Parameter     | Type                   | Required  | Description                                                     |
 |---------------|------------------------|-----------|-----------------------------------------------------------------|
 | source        | string                 | x         | Data source.                                                    |
-| dataType      | TickDataType           | x         | Specifies if output should contain trades, quotes or both.      |
+| data_type     | TickDataType           | x         | Specifies if output should contain trades, quotes or both.      |
 | symbol        | string                 | x         | Symbol.                                                         |
 | day           | pd.Timestamp / string  | x         | Requested day.                                                  |
-| fromTime      | pd.Timedelta / string  |           | Start of the requested time range.                              |
-| toTime        | pd.Timedelta / string  |           | End of the requested time range.                                |
+| from_time     | pd.Timedelta / string  |           | Start of the requested time range.                              |
+| to_time       | pd.Timedelta / string  |           | End of the requested time range.                                |
 | flags         | [TickDataFlag]         |           | List of flags.                                                  |
 
 Available TickDataType values:
@@ -235,7 +235,7 @@ Retrieving hourly aggregated trades:
 
     td = tick_aggregated(source='ACTIV', symbol='CL/17U.NXG', day='2017.08.16',
                          bin_size=3600, # hourly
-                         type=TickDataType.TRADES,
+                         data_type=TickDataType.TRADES,
                          flags=[TickDataFlag.APPLY_TRADE_CORRECTIONS, TickDataFlag.INCLUDE_NON_REGULAR,
                                 TickDataFlag.USE_MARKET_TS])
 
@@ -246,7 +246,7 @@ Retrieving quotes aggregated in 15 minute intervals:
 
     td = tick_aggregated(source='ACTIV', symbol='CL/17U.NXG', day='2017.08.16',
                          bin_size=900, # 15 minutes
-                         type=TickDataType.QUOTES, flags=[])
+                         data_type=TickDataType.QUOTES, flags=[])
 
 
 Retrieving trades and quotes in one minute bins:
@@ -254,7 +254,7 @@ Retrieving trades and quotes in one minute bins:
     from xyt import tick_aggregated, TickDataType, TickDataFlag
 
     td = tick_aggregated(source='ACTIV', symbol='CL/17U.NXG', day='2017.08.16',
-                         type=TickDataType.TRADES_AND_QUOTES)
+                         data_type=TickDataType.TRADES_AND_QUOTES)
 
 
 #### Input parameters
@@ -267,7 +267,7 @@ Retrieving trades and quotes in one minute bins:
 | day                 | pd.Timestamp / string  | x         | Requested day.                                             |
 | from_time           | pd.Timedelta / string  |           | Start of the requested time range.                         |
 | to_time             | pd.Timedelta / string  |           | End of the requested time range.                           |
-| bin_size_in_seconds | long                   |           | Size of the time bins expressed in seconds.                |
+| bin_size            | long                   |           | Size of the time bins expressed in seconds.                |
 | flags               | [TickDataFlag]         |           | List of flags.                                             |
 
 Available Type and Flag values - as described [here](lib_python.html#input-parameters-2).
@@ -301,7 +301,7 @@ Retrieving trade snapshot at 12:00:00.00:
     from xyt import tick_snapshot, TickDataType, TickDataFlag
 
     td = tick_snapshot(source='ACTIV', symbols=['CL/17U.NXG'], day='2017.08.16',
-                       type=TickDataType.TRADES,
+                       data_type=TickDataType.TRADES,
                        time='12:00:00.000',
                        flags=[TickDataFlag.APPLY_TRADE_CORRECTIONS, TickDataFlag.INCLUDE_NON_REGULAR,
                               TickDataFlag.USE_MARKET_TS])
@@ -311,7 +311,7 @@ Retrieving quote snapshot at 09:15:00:
     from xyt import tick_snapshot, TickDataType, TickDataFlag
 
     td = tick_snapshot(source='ACTIV', symbols=['CL/17U.NXG'], day='2017.08.16',
-                       type=TickDataType.QUOTES,
+                       data_type=TickDataType.QUOTES,
                        time='09:15:00.000',
                        flags=[])
 
@@ -320,7 +320,7 @@ Retrieving trade and quote snapshot at 10:03:00:
     from xyt import tick_snapshot, TickDataType, TickDataFlag
 
     td = tick_snapshot(source='ACTIV', symbols=['CL/17U.NXG'], day='2017.08.16',
-                       type=TickDataType.TRADES_AND_QUOTES,
+                       data_type=TickDataType.TRADES_AND_QUOTES,
                        time='10:03:00.000',
                        flags=[TickDataFlag.APPLY_TRADE_CORRECTIONS, TickDataFlag.INCLUDE_NON_REGULAR,
                               TickDataFlag.USE_MARKET_TS])
@@ -363,7 +363,6 @@ Retrieving orders:
     orders = order_data(source='ACTIV', symbols=['DBK.XE'], day='2016.10.04',
                         from_time='09:00:00.000', to_time='09:01:30.000')
 
-
 #### Input parameters
 
 | Parameter     | Type                   | Required  | Description                                   |
@@ -371,6 +370,41 @@ Retrieving orders:
 | source        | string                 | x         | Data source.                                  |
 | symbols       | [string]               | x         | List of symbols.                              |
 | day           | pd.Timestamp / string  | x         | Requested day.                                |
+| from_time     | pd.Timedelta / string  |           | Start of the requested time range.            |
+| to_time       | pd.Timedelta / string  |           | End of the requested time range.              |
+
+#### Output columns
+
+| Column           | Type          | Description                                                     |
+|------------------|---------------|-----------------------------------------------------------------|
+| symbol           | string        | Symbol.                                                         |
+| order_date       | pd.Timestamp  | Date.                                                           |
+| time             | pd.Timedelta  | Time of trade or quote.                                         |
+| action           | string        | Orderbook entry update action.                                  |
+| order_id         | string        | Order ID.                                                       |
+| order_side       | string        | Order side.                                                     |
+| order_price      | double        | Order price.                                                    |
+| order_size       | long          | Order size.                                                     |
+| order_time       | pd.Timedelta  | Order time.                                                     |
+| trade_id         | string        | Trade ID.                                                       |
+| order_type       | pd.Timedelta  | Order type.                                                     |
+
+### Auction data
+
+Retrieving orders:
+
+    from xyt import auction_data
+
+    auctions = auction_data(source='ACTIV', symbols=['DBK.XE'], day='2016.10.04')
+
+
+#### Input parameters
+
+| Parameter     | Type                   | Required  | Description                                  |
+|---------------|------------------------|-----------|----------------------------------------------|
+| source        | string                 | x         | Data source.                                 |
+| symbols       | [string]               | x         | List of symbols.                             |
+| day           | pd.Timestamp / string  | x         | Requested day.                               |
 
 #### Output columns
 
@@ -470,7 +504,7 @@ Note searching by pattern and retrieval of basing reference data is possible via
 
     from xyt import reference_data
 
-    reference = reference_data(source='ACTIV', pattern='ZALd.BTE', day='2016.09.01')
+    reference = reference_data(source='ACTIV', symbols=['DBK.XE'], day='2016.09.01')
 
 
 #### Input parameters
@@ -596,11 +630,11 @@ Retrieving tick rules:
 
 #### Input parameters
 
-| Parameter     | Type                    | Required  | Description                                         |
-|---------------|-------------------------|-----------|-----------------------------------------------------|
-| source        | string                  | x         | Data source.                                        |
-| symbols       | [string]                | x         | List of symbols.                                    |
-| day           | pd.Timestamp / string   | x         | Requested day.                                      |
+| Parameter     | Type                    | Required  | Description                                 |
+|---------------|-------------------------|-----------|---------------------------------------------|
+| source        | string                  | x         | Data source.                                |
+| symbols       | [string]                | x         | List of symbols.                            |
+| day           | pd.Timestamp / string   | x         | Requested day.                              |
 
 #### Output columns
 
@@ -620,27 +654,27 @@ Retrieving option chain:
 
     from xyt import chain, ChainType
 
-    chain = chain(source='ACTIV', exchange='OPRA_COMPOSITE',
-                  symbol='=DJX.W', day='2016.09.02',
-                  chain_type=ChainType.OPTIONS)
+    chains = chain(source='ACTIV', exchange='OPRA_COMPOSITE',
+                   symbol='=DJX.W', day='2016.09.02',
+                   chain_type=ChainType.OPTIONS)
 
 
 Retrieving future chain:
 
-from xyt import chain, ChainType
+    from xyt import chain, ChainType
 
-chain = chain(source='ACTIV', exchange='NYMEX',
-              symbol='CL', day='2016.09.02',
-              chain_type=ChainType.FUTURES)
+    chains = chain(source='ACTIV', exchange='NYMEX',
+                   symbol='CL', day='2016.09.02',
+                   chain_type=ChainType.FUTURES)
 
 
 Retrieving future option chain:
 
-from xyt import chain, ChainType
+    from xyt import chain, ChainType
 
-chain = chain(source='ACTIV', exchange='NYMEX',
-              symbol='CL', day='2016.09.02',
-              chain_type=ChainType.FUTURE_OPTIONS)
+    chains = chain(source='ACTIV', exchange='NYMEX',
+                   symbol='CL', day='2016.09.02',
+                   chain_type=ChainType.FUTURE_OPTIONS)
 
 
 #### Input parameters
@@ -705,6 +739,38 @@ Retrieved data is represented as instance of class derived from `DataObject`.
   | to\_csv()     | Converts retrieved data to CSV. Wraps: `self.to_pandas().to_csv()`.                     |
 
 Deserialized protobuf representation is accessible via property: `data`.
+
+
+Troubleshooting
+---------------
+
+### Proxies
+
+If you need to use a proxy, you can configure the `ApiSettings.proxies` property:
+
+    proxies = {
+      'http': 'http://10.10.1.10:3128',
+      'https': 'http://10.10.1.10:1080',
+    }
+
+    ApiSettings.proxies = proxies
+
+You can also configure proxies by setting the environment variables `HTTP_PROXY` and `HTTPS_PROXY`.
+
+Linux:
+
+    $ export HTTP_PROXY="http://10.10.1.10:3128"
+    $ export HTTPS_PROXY="http://10.10.1.10:1080"
+
+Windows:
+
+    $ set HTTP_PROXY="http://10.10.1.10:3128"
+    $ set HTTPS_PROXY="http://10.10.1.10:1080"
+
+
+To use HTTP Basic Auth with your proxy, use the `http://user:password@host/` syntax:
+
+    proxies = {'http': 'http://user:pass@10.10.1.10:3128/'}
 
 
 Development
