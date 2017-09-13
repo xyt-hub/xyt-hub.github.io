@@ -45,7 +45,7 @@ var exchanges = client.LookupExchanges("ACTIV");
 | Parameter       | Type           | Required  | Description                                       |
 |-----------------|----------------|-----------|---------------------------------------------------|
 | source          | String         | x         | Data source.                                      |
-| exchangeFilters | List<\String\> |           | Pattern.                                          |
+| exchangeFilters | List\<String\> |           | Pattern.                                          |
 | firstDay        | DateTime?      |           | First day that should be taken into account.      |
 | lastDay         | DateTime?      |           | Last day that should be taken into account.       |
 
@@ -274,7 +274,7 @@ var tickAggregated = client.TickAggregated("SOURCE", "CL/17U.NXG",
 | day                 | DateTime        | x         | Requested day.                                                  |
 | fromTime            | TimeSpan?       |           | Start of the requested time range.                              |
 | toTime              | TimeSpan?       |           | End of the requested time range.                                |
-| binSizeInSeconds    | long?           |           | Size of the time bins expressed in seconds.                     |
+| binSize             | int?            |           | Size of the time bins expressed in seconds.                     |
 | flags               | List\<Flag\>    |           | List of flags.                                                  |
 
 Available Type and Flag values - as described [here](lib_csharp.html#input-parameters-2).
@@ -497,7 +497,9 @@ Retrieving settlement prices for given list of derivative symbols:
 ```
 var symbols = new List<string>() { "DBK.XE" };
 
-var prices = client.SettlementPrices("ACTIV", symbols, new DateTime(2016, 10, 4), new DateTime(2016, 11, 4));
+var prices = client.SettlementPrices("SOURCE", symbols,
+                                     firstDay: new DateTime(2016, 9, 2),
+                                     lastDay: new DateTime(2017, 9, 2));
 ```
 
 #### Input parameters
