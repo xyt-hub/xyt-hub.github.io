@@ -112,6 +112,58 @@ Response from service endpoint: `/overview/products`
 | last_day | [Date](#types.proto.Date) | 8 | Last day in the product type. |
 | feed | string | 9 | Exchange feed. |
 
+### <a class="anchor" name="api_lookup.proto.OverviewDatasetsRequest"></a> Message: OverviewDatasetsRequest
+
+Retrieves available datasets.
+
+Request for service endpoint: `/overview/datasets`
+
+
+| Field | Type | Id  | Description |
+| ----- | ---- | --- | ----------- |
+| header | [RequestHeader](#types.proto.RequestHeader) | 1 | Request header. |
+
+### <a class="anchor" name="api_lookup.proto.OverviewDatasetsResponse"></a> Message: OverviewDatasetsResponse
+
+Retrieves available datasets.
+
+Response from service endpoint: `/overview/datasets`
+
+
+| Field | Type | Id  | Description |
+| ----- | ---- | --- | ----------- |
+| header | [ResponseHeader](#types.proto.ResponseHeader) | 1 | Response header. |
+| datasets | repeated  [Dataset](#api_lookup.proto.OverviewDatasetsResponse.Dataset) | 10 | List of datasets. |
+
+#### <a class="anchor" name="api_lookup.proto.OverviewDatasetsResponse.Dataset"></a> Message: OverviewDatasetsResponse.Dataset
+
+
+| Field | Type | Id  | Description |
+| ----- | ---- | --- | ----------- |
+| source | string | 11 | Data source. |
+| region | string | 10 | Region. |
+| id | string | 1 | Id. |
+| exchange | string | 2 | Exchange. |
+| name | string | 3 | Name. |
+| title | string | 4 | Title. |
+| description | string | 5 | Description. |
+| location | string | 6 | Location. |
+| symbols | repeated  string | 7 | Symbols. |
+| abbreviations | repeated  string | 8 | Abbreviation(s) of the exchange. |
+| mics | repeated  string | 9 | Market identifier codes. |
+| formats | repeated  string | 12 | Formats. |
+| entity_types | repeated  string | 13 | Entity type(s). |
+| granularity | string | 14 | Granularity. |
+| products | repeated  [Product](#api_lookup.proto.OverviewDatasetsResponse.Product) | 15 | Products. |
+
+#### <a class="anchor" name="api_lookup.proto.OverviewDatasetsResponse.Product"></a> Message: OverviewDatasetsResponse.Product
+
+
+| Field | Type | Id  | Description |
+| ----- | ---- | --- | ----------- |
+| product | string | 1 | Product. |
+| first_day | [Date](#types.proto.Date) | 2 | First day. |
+
 ### <a class="anchor" name="api_lookup.proto.OverviewEntitiesRequest"></a> Message: OverviewEntitiesRequest
 
 Retrieves available entity types.
