@@ -14,7 +14,9 @@ topnav_dropdowns:
       folderitems:
         - title: Official homepage
           external_url: http://www.big-xyt.com
+        - title: Twitter
+          external_url: https://twitter.com/bigxyt
+        - title: LinkedIn
+          external_url: https://www.linkedin.com/company/big---xyt-gmbh
         - title: Github repository
           external_url: https://github.com/xyt-hub
-        - title: LinkedIn
-          external_url: https://www.linkedin.com/company-beta/9381735/

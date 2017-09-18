@@ -5,7 +5,7 @@ entries:
   product: xyt
   folders:
 
-  - title: Data access
+  - title: API documentation
     output: web
     folderitems:
     - title: Java
@@ -52,9 +52,12 @@ entries:
       url: /api_sample_python.html
       output: web
 
-  - title: Support
+  - title: Contact us
     output: web
     folderitems:
+    - title: Contact us
+      url: /contact_us.html
+      output: web
     - title: Support
       url: /support.html
       output: web

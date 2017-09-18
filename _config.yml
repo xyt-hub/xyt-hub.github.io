@@ -3,10 +3,10 @@ repository: xyt-hub/xyt-hub.github.io
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 
-topnav_title: xyt hub documentation
+topnav_title: xyt hub API documentation
 # this appears on the top navigation bar next to the home button
 
-site_title: xyt hub documentation
+site_title: xyt hub API documentation
 # this appears in the html browser tab for the site title (seen mostly by search engines, not users)
 
 company_name: big xyt AG
@@ -99,8 +99,8 @@ defaults:
 sidebars:
 - xyt_sidebar
 
-description: "Technical documentation for the xyt hub."
+description: "API documentation for the xyt hub."
 # the description is used in the feed.xml file
 
 # needed for sitemap.xml file only
-url: http://xyt-hub.github.io
+url: https://xyt-hub.github.io
