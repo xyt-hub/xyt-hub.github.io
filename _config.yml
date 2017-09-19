@@ -47,6 +47,9 @@ feedback_email: contact@big-xyt.com
 # feedback_link: "http://helpy.io/"
 # if you uncomment the previous line, it changes where the feedback link points to
 
+plugins:
+  - jekyll-redirect-from
+
 highlighter: rouge
 # library used for syntax highlighting
 
@@ -73,31 +76,11 @@ defaults:
       layout: "page"
       comments: true
       search: true
-      sidebar: xyt_sidebar
-  -
-    scope:
-      path: ""
-      type: "tooltips"
-    values:
-      layout: "page"
-      comments: true
-      search: true
-      tooltip: true
-
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-      comments: true
-      search: true
-      sidebar: home_sidebar
 
 # these are defaults used for the frontmatter for these file types
 
-sidebars:
-- xyt_sidebar
+# sidebars:
+# - xyt_sidebar
 
 description: "API documentation for the xyt hub."
 # the description is used in the feed.xml file
